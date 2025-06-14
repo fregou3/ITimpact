@@ -6,7 +6,7 @@ const HomePage = () => {
     <div className="home-page">
       <div className="container">
         <section className="hero">
-          <h1>Calculez l'Impact Environnemental de votre Infrastructure AWS</h1>
+          <h1>Calculez l'Impact Environnemental de votre Infrastructure</h1>
           <p>
             Cet outil vous permet d'estimer l'empreinte carbone de votre infrastructure cloud AWS
             en fonction de vos instances EC2, du trafic réseau et de la localisation de vos utilisateurs.
