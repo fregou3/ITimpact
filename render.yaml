@@ -1,0 +1,24 @@
+services:
+  # Service pour le frontend
+  - type: web
+    name: impact-environnemental-frontend
+    env: node
+    buildCommand: cd frontend && npm install && npm run build
+    startCommand: cd frontend && npm run serve
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+
+  # Service pour le backend
+  - type: web
+    name: impact-environnemental-backend
+    env: node
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5043

@@ -10,7 +10,8 @@ ImpactEnvironnemental_1.0/
 ├── Clarins_Infra_CO2.xlsx    # Données sur les types d'instances EC2
 ├── backend/                  # Backend Node.js/Express
 ├── frontend/                 # Frontend React
-└── docker-compose.yml        # Configuration PostgreSQL
+├── docker-compose.yml        # Configuration PostgreSQL
+└── render.yaml                # Configuration Render
 ```
 
 ## Configuration requise
@@ -18,6 +19,38 @@ ImpactEnvironnemental_1.0/
 - Node.js (v14+)
 - Docker Desktop
 - PostgreSQL (via Docker)
+
+## Déploiement sur Render
+
+Cette application est configurée pour être déployée sur Render à l'aide du fichier `render.yaml`.
+
+### Étapes de déploiement
+
+1. Créez un compte sur [Render](https://render.com/) si vous n'en avez pas déjà un
+2. Dans le tableau de bord Render, cliquez sur "New" puis "Blueprint"
+3. Connectez votre dépôt GitHub et sélectionnez ce projet
+4. Render détectera automatiquement le fichier `render.yaml` et configurera les services
+5. Cliquez sur "Apply" pour démarrer le déploiement
+
+### Configuration manuelle
+
+Si vous préférez configurer manuellement les services :
+
+#### Frontend
+
+1. Créez un nouveau service Web
+2. Sélectionnez le dépôt GitHub et le répertoire `frontend`
+3. Définissez le build command : `npm install && npm run build`
+4. Définissez le start command : `npm run serve`
+5. Ajoutez la variable d'environnement `PORT=10000`
+
+#### Backend
+
+1. Créez un nouveau service Web
+2. Sélectionnez le dépôt GitHub et le répertoire `backend`
+3. Définissez le build command : `npm install`
+4. Définissez le start command : `npm start`
+5. Ajoutez la variable d'environnement `PORT=5043`
 
 ## Installation et démarrage
 
