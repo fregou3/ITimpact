@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="container">
-        <h1>Calculateur d'Impact environnemental AWS par Communify</h1>
+        <h1>Calculateur d'Impact environnemental Clarins T.R.U.S.T.</h1>
         <nav>
           <ul>
             <li>
