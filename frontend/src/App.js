@@ -22,7 +22,7 @@ function App() {
         </main>
         <footer className="footer">
           <div className="container">
-            <p>&copy; 2025 Calculateur d'Impact Environnemental AWS</p>
+            <p>&copy; 2025 Communify</p>
           </div>
         </footer>
       </div>

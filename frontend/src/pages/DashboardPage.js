@@ -126,20 +126,18 @@ const WorldMap = () => {
 
 const DashboardPage = () => {
   const theme = useTheme();
-  const [totalCO2, setTotalCO2] = useState(3388);
+  const [totalCO2, setTotalCO2] = useState(9230);
   
   // Données pour le graphique en donut
   const [donutData, setDonutData] = useState({
-    labels: ['Infrastructure', 'Fournisseur', 'Consommateur', 'Consommateur Mobile'],
+    labels: ['Instances EC2', 'Connexions réseau'],
     datasets: [{
-      data: [132, 306, 2395, 554],
+      data: [3010, 6220],
       backgroundColor: [
-        '#1976d2',  // bleu pour Infrastructure
-        '#9c27b0',  // violet pour Fournisseur
-        '#2e7d32',  // vert pour Consommateur
-        '#0288d1',  // bleu clair pour Consommateur Mobile
+        '#1976d2',  // bleu pour Instances EC2
+        '#4caf50',  // vert pour Connexions réseau
       ],
-      borderColor: ['white', 'white', 'white', 'white'],
+      borderColor: ['white', 'white'],
       borderWidth: 2,
     }]
   });
@@ -180,7 +178,7 @@ const DashboardPage = () => {
         {/* Section 1: Consommation CO2 */}
         <Box sx={{ mb: 6 }}>
           <Typography variant="h5" sx={{ mb: 3, fontWeight: 500 }}>
-            Consommation CO2 de la plateforme en 2025
+            Impact CO2 de l'infrastructure en 2025
           </Typography>
           
           <Grid container spacing={2}>
@@ -268,32 +266,23 @@ const DashboardPage = () => {
                 <Table size="small">
                   <TableHead>
                     <TableRow>
-                      <TableCell sx={{ fontWeight: 'bold', borderBottom: '1px solid rgba(224, 224, 224, 1)' }}>Applications et Infrastructure</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', borderBottom: '1px solid rgba(224, 224, 224, 1)' }}>Sources d'émissions</TableCell>
                       <TableCell align="right" sx={{ fontWeight: 'bold', borderBottom: '1px solid rgba(224, 224, 224, 1)' }}>Émissions (kgCO2e)</TableCell>
                       <TableCell align="right" sx={{ fontWeight: 'bold', borderBottom: '1px solid rgba(224, 224, 224, 1)' }}>%</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     <TableRow>
-                      <TableCell>Infrastructure</TableCell>
-                      <TableCell align="right">132</TableCell>
-                      <TableCell align="right">3.9%</TableCell>
+                      <TableCell>Instances EC2</TableCell>
+                      <TableCell align="right">3,010</TableCell>
+                      <TableCell align="right">{((3010 / 9230) * 100).toFixed(1)}%</TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell>Fournisseur</TableCell>
-                      <TableCell align="right">306</TableCell>
-                      <TableCell align="right">9.04%</TableCell>
+                      <TableCell>Connexions réseau</TableCell>
+                      <TableCell align="right">6,220</TableCell>
+                      <TableCell align="right">{((6220 / 9230) * 100).toFixed(1)}%</TableCell>
                     </TableRow>
-                    <TableRow>
-                      <TableCell>Consommateur</TableCell>
-                      <TableCell align="right">2,395</TableCell>
-                      <TableCell align="right">70.69%</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Consommateur Mobile</TableCell>
-                      <TableCell align="right">554</TableCell>
-                      <TableCell align="right">16.37%</TableCell>
-                    </TableRow>
+
                   </TableBody>
                 </Table>
               </TableContainer>

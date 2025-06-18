@@ -804,17 +804,17 @@ const CalculatorPage = () => {
             <div className="results-summary">
               <div className="result-item">
                 <h3>Instances EC2</h3>
-                <p className="result-value">{result.instanceCO2.toFixed(2)} kg CO2e</p>
+                <p className="result-value">{(result.instanceCO2 * 1000).toFixed(2)} kg CO2e</p>
               </div>
               
               <div className="result-item">
                 <h3>Connexions réseau</h3>
-                <p className="result-value">{result.connectionCO2.toFixed(2)} kg CO2e</p>
+                <p className="result-value">{(result.connectionCO2 * 1000).toFixed(2)} kg CO2e</p>
               </div>
               
               <div className="result-item total">
                 <h3>Total</h3>
-                <p className="result-value">{result.totalCO2.toFixed(2)} kg CO2e</p>
+                <p className="result-value">{(result.totalCO2 * 1000).toFixed(2)} kg CO2e</p>
               </div>
             </div>
             
@@ -839,7 +839,7 @@ const CalculatorPage = () => {
                     data={{
                       labels: ['Instances EC2', 'Connexions réseau'],
                       datasets: [{
-                        data: [result?.instanceCO2 || 0, result?.connectionCO2 || 0],
+                        data: [(result?.instanceCO2 || 0) * 1000, (result?.connectionCO2 || 0) * 1000],
                         backgroundColor: ['rgba(25, 118, 210, 0.7)', 'rgba(76, 175, 80, 0.7)'],
                         borderColor: ['rgb(21, 101, 192)', 'rgb(56, 142, 60)'],
                         borderWidth: 1,
@@ -864,7 +864,7 @@ const CalculatorPage = () => {
             <div className="results-summary">
               <div className="result-item bg-blue-50 p-4 rounded-lg shadow">
                 <h3 className="text-blue-700">Infrastructure AWS</h3>
-                <p className="result-value text-2xl font-bold">{(advancedResult.infrastructure.annuel || 132.45).toFixed(2)} kg CO2e/an</p>
+                <p className="result-value text-2xl font-bold">{((advancedResult.infrastructure.annuel || 132.45) * 1000).toFixed(2)} kg CO2e/an</p>
                 <p className="text-sm text-gray-600 mt-1">Basé sur la méthodologie AWS CO2</p>
               </div>
               
@@ -872,15 +872,15 @@ const CalculatorPage = () => {
                 <h3 className="text-red-700">Réseau {useCDN ? 'avec CDN' : 'sans CDN'}</h3>
                 <p className="result-value text-2xl font-bold">
                   {useCDN 
-                    ? advancedResult.reseau.avecCDN.co2.toFixed(2) 
-                    : advancedResult.reseau.sansCDN.co2.toFixed(2)} kg CO2e
+                    ? (advancedResult.reseau.avecCDN.co2 * 1000).toFixed(2) 
+                    : (advancedResult.reseau.sansCDN.co2 * 1000).toFixed(2)} kg CO2e
                 </p>
                 <p className="text-sm text-gray-600 mt-1">{useCDN ? 'Optimisé avec CDN' : 'Sans optimisation CDN'}</p>
               </div>
               
               <div className="result-item bg-green-50 p-4 rounded-lg shadow">
                 <h3 className="text-green-700">Usage utilisateurs</h3>
-                <p className="result-value text-2xl font-bold">{advancedResult.usage.total.toFixed(2)} kg CO2e</p>
+                <p className="result-value text-2xl font-bold">{(advancedResult.usage.total * 1000).toFixed(2)} kg CO2e</p>
                 <p className="text-sm text-gray-600 mt-1">Impact des appareils utilisateurs</p>
               </div>
               
@@ -888,8 +888,8 @@ const CalculatorPage = () => {
                 <h3 className="text-purple-700">Impact total</h3>
                 <p className="result-value text-2xl font-bold">
                   {useCDN 
-                    ? advancedResult.impactTotal.avecCDN.toFixed(2) 
-                    : advancedResult.impactTotal.sansCDN.toFixed(2)} kg CO2e
+                    ? (advancedResult.impactTotal.avecCDN * 1000).toFixed(2) 
+                    : (advancedResult.impactTotal.sansCDN * 1000).toFixed(2)} kg CO2e
                 </p>
                 <p className="text-sm text-gray-600 mt-1">Empreinte carbone totale annuelle</p>
               </div>
